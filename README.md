@@ -1,2 +1,2 @@
-# wixExercise
-Wix exercise
+# Exercise
+exercise
