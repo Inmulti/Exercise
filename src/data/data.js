@@ -1,71 +1,71 @@
 export default {
-    name: 'Tree',
-    children: [
+  name: 'Tree',
+  children: [
+    {
+      name: 'Home',
+      children: [],
+    },
+    {
+      name: 'Furniture',
+      children: [
         {
-            name: 'Home',
-            children: [],
+          name: 'Chair',
+          children: [],
         },
         {
-            name: 'News',
-            children: [
+          name: 'Table',
+          children: [
+            {
+              name: 'Leg',
+              children: [
                 {
-                    name: 'lithuanian',
-                    children: [],
+                  name: 'Wood',
+                  children: [],
                 },
                 {
-                    name: 'sports',
-                    children: [
-                        {
-                            name: 'Basketball',
-                            children: [
-                                {
-                                    name: 'Rytas',
-                                    children: [],
-                                },
-                                {
-                                    name: 'zalgiris',
-                                    children: [],
-                                },
-                            ],
-                        },
-                        {
-                            name: 'Soccer',
-                            children: [],
-                        },
-                    ],
+                  name: 'Metal',
+                  children: [],
                 },
-            ],
+              ],
+            },
+            {
+              name: 'Top',
+              children: [],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'It',
+      children: [
+        {
+          name: 'Office',
+          children: [],
         },
         {
-            name: 'It',
-            children: [
+          name: 'Outside',
+          children: [
+            {
+              name: 'Park',
+              children: [
                 {
-                    name: 'lithuanian',
-                    children: [],
+                  name: 'Lake',
+                  children: [],
                 },
                 {
-                    name: 'sports',
-                    children: [
-                        {
-                            name: 'Basketball',
-                            children: [
-                                {
-                                    name: 'Rytas',
-                                    children: [],
-                                },
-                                {
-                                    name: 'zalgiris',
-                                    children: [],
-                                },
-                            ],
-                        },
-                        {
-                            name: 'Soccer',
-                            children: [],
-                        },
-                    ],
+                  name: 'Stuff',
+                  children: [],
                 },
-            ],
+              ],
+            },
+            {
+              name: 'Dog',
+              children: [],
+            },
+          ],
         },
-    ],
+      ],
+    },
+  ],
 };

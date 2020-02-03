@@ -1,58 +1,70 @@
 import React from 'react';
-import {TextInput, Text, ScrollView} from 'react-native';
-import data from '../../data/data'
+import {Text, ScrollView, Alert} from 'react-native';
+import {recursive, addToData} from '../../utils/treeFormatHelpers';
+import AddNewValue from '../../components/addNewValue';
+import rawData from '../../data/data';
 import styles from './styles';
-
-let treeAray = [];
-
-const recursive = (data, level = 0) => {
-  let output = '';
-  for (let i = 0; i < level; i++) {
-    output += '-';
-  }
-  output += data.name;
-  treeAray.push(output);
-
-  if (data.children) {
-    for (let i = 0; i < data.children.length; i++) {
-      recursive(data.children[i], level + 1);
-    }
-  }
-};
-
-const addToData = (data, path, value) => {
-  if (path.length === 0) {
-    data.push({
-      name: value,
-      children: [],
-    });
-    return true;
-  }
-  if (data.name === path[0]) {
-    path.shift();
-    addToData(data.children, path, value);
-  } else {
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].name === path[0]) {
-        path.shift();
-        addToData(data[i].children, path, value);
-      }
-    }
-  }
-  return false;
-};
 
 class MainScreen extends React.Component {
   static navigationOptions = () => ({
     header: () => null,
   });
 
+  state = {
+    input: undefined,
+    data: rawData,
+    viewTreeArray: [],
+  };
+
+  componentDidMount() {
+    this.renderTree();
+  }
+
+  renderTree = () => {
+    const {data} = this.state;
+    let treeArray = [];
+    recursive(data, treeArray);
+    this.setState({viewTreeArray: treeArray});
+  };
+
+  addToTree = inputValue => {
+    try {
+      const {data} = this.state;
+      let treeArray = [];
+      // Split inputValue to array
+      let newNode = inputValue.split(' ');
+      const newValue = newNode.pop();
+      addToData(data, newNode, newValue);
+      recursive(data, treeArray);
+      this.setState({viewTreeArray: treeArray});
+    } catch (e) {
+      if (inputValue === undefined || '') {
+        Alert.alert('Error', 'Input is empty');
+      } else {
+        Alert.alert(
+          'Error',
+          'Value already exist at this level or this path does not exist',
+        );
+      }
+    }
+  };
+
   render() {
-      recursive(data);
+    const {input, viewTreeArray} = this.state;
     return (
       <ScrollView style={styles.container}>
-          <Text style={styles.text}>Recursive</Text>
-          {treeAray.map(key => {console.log('key', key); return(<Text style={styles.text}>{key}</Text>)})}
+        <AddNewValue
+          onChangeText={text => this.setState({input: text})}
+          onPress={() => this.addToTree(input)}
+        />
+        <Text style={styles.title}>Recursive</Text>
+        {viewTreeArray.map((key, index) => {
+          return (
+            <Text key={key + index} style={styles.text}>
+              {key}
+            </Text>
+          );
+        })}
       </ScrollView>
     );
   }
