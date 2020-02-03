@@ -22,7 +22,7 @@ const AddNewValue = props => {
 };
 
 AddNewValue.propTypes = {
-  nPress: PropTypes.func,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default AddNewValue;
