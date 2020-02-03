@@ -22,13 +22,13 @@ const TabNavigator = createBottomTabNavigator(
     MAINSCREEN: {
       screen: MainScreenNavigator,
       navigationOptions: () => ({
-        tabBarLabel: 'Main',
+        tabBarLabel: 'Recursive',
       }),
     },
     SECONDSCREEN: {
       screen: SecondScreenNavigator,
       navigationOptions: () => ({
-        tabBarLabel: 'Second',
+        tabBarLabel: 'Iterative',
       }),
     },
   },
@@ -37,7 +37,7 @@ const TabNavigator = createBottomTabNavigator(
       showIcon: true,
       showLabel: true,
       upperCaseLabel: true,
-      activeTintColor: 'red',
+      activeTintColor: 'limegreen',
       inactiveTintColor: 'grey',
       style: {
         backgroundColor: 'black',
