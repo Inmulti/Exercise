@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'Wix' do
-  # Pods for Wix
+target 'exercise' do
+  # Pods for exercise
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -36,7 +36,7 @@ target 'Wix' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
-  target 'WixTests' do
+  target 'exerciseTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -44,10 +44,10 @@ target 'Wix' do
   use_native_modules!
 end
 
-target 'Wix-tvOS' do
-  # Pods for Wix-tvOS
+target 'exercise-tvOS' do
+  # Pods for exercise-tvOS
 
-  target 'Wix-tvOSTests' do
+  target 'exercise-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
