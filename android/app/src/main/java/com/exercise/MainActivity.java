@@ -1,4 +1,4 @@
-package com.wix;
+package com.exercise;
 
 import com.facebook.react.ReactActivity;
 

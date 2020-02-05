@@ -49,12 +49,16 @@ class MainScreen extends React.Component {
     }
   };
 
+  changeInput = input => {
+    this.setState({input: text});
+  };
+
   render() {
     const {input, viewTreeArray} = this.state;
     return (
       <ScrollView style={styles.container}>
         <AddNewValue
-          onChangeText={text => this.setState({input: text})}
+          onChangeText={text => this.setState({input})}
           onPress={() => this.addToTree(input)}
         />
         <Text style={styles.title}>Recursive</Text>
